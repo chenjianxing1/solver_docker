@@ -27,4 +27,12 @@ RUN apt-get install -y --no-install-recommends  \
     subversion \
     pkg-config \
     autoconf \
-    automake \
+    automake 
+
+RUN apt-get install -y --no-install-recommends  \
+    apt-transport-https ca-certificates \
+    gcc \
+    g++ \
+    libtool \
+    curl \
+    unzip 
