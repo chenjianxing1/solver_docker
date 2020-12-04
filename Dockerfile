@@ -27,4 +27,20 @@ RUN apt-get install -y --no-install-recommends  \
     subversion \
     pkg-config \
     autoconf \
-    automake \
+    automake 
+
+RUN apt-get install -y --no-install-recommends  \
+    apt-transport-https ca-certificates \
+    gcc \
+    g++ \
+    libtool \
+    curl \
+    unzip 
+
+    
+# Install ThirdParty
+COPY ./3rd_party/ /opt/3rd_party/
+
+RUN cd /opt/3rd_party && \
+    bash init.sh && \
+    rm -fr /opt/3rd_party/
