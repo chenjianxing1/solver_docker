@@ -1,1 +1,1 @@
-docker build --tag=solver_img:0.0.1 .
+docker build --tag=chenjianxing1/solver_img:0.0.2 .
