@@ -27,8 +27,9 @@ RUN apt-get install -y --no-install-recommends  \
     subversion \
     pkg-config \
     autoconf \
-    automake 
-
+    automake \
+    libboost-dev \
+    gdb 
 RUN apt-get install -y --no-install-recommends  \
     apt-transport-https ca-certificates \
     gcc \
