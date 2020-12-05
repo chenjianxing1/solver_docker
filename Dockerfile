@@ -29,19 +29,36 @@ RUN apt-get install -y --no-install-recommends  \
     autoconf \
     automake \
     libboost-dev \
-    gdb 
+    gdb \ 
+    rsync \
+    tar \
+    python \
+    ssh
+
 RUN apt-get install -y --no-install-recommends  \
     apt-transport-https ca-certificates \
     gcc \
     g++ \
     libtool \
     curl \
-    unzip 
+    unzip
 
     
+RUN  apt-get install -y openssh-server gdbserver
+
 # Install ThirdParty
 COPY ./3rd_party/ /opt/3rd_party/
 
 RUN cd /opt/3rd_party && \
     bash init.sh && \
     rm -fr /opt/3rd_party/
+
+RUN mkdir /var/run/sshd
+RUN echo 'root:123' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN echo "export VISIBLE=now" >> /etc/profile
+
+EXPOSE 22
