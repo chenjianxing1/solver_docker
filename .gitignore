@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 .DS_Store
+.bash_history
+.cache/
+.viminfo
 # Compiled Object files
 *.slo
 *.lo
