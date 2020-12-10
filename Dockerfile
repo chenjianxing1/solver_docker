@@ -5,7 +5,7 @@ MAINTAINER JianxingChen<buzijianwei@163.com>
 # 指定工作目录
 WORKDIR /root
 
-RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list &&  apt-get clean && apt-get update  
+RUN  sed -i s@/archive.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list &&  apt-get clean && apt-get update  
 
 RUN apt-get install -y --no-install-recommends  \
     apt-transport-https ca-certificates \
